@@ -22,6 +22,8 @@ if(process.env.NODE_ENV === 'production'){
 const port = process.env.PORT || 8080;
 
 connectDb().then(async () => {
-    app.listen(port,()=>console.log('app listening on 5000'));
+    app.listen(port,()=>console.log(`app listening on ${port}`));
 });
+
+//--ignore .gitignore --copy-files
 

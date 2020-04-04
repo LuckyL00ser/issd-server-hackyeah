@@ -6,6 +6,7 @@ import * as device_controller from '../controllers/device.controller'
 
 //
 router.get('/',  device_controller.index);
+router.get('/get-nearby-devices',  device_controller.getNearbyDevices);
 router.get('/:id',  device_controller.get);
 router.post('/',  device_controller.create);
 router.delete('/:id',  device_controller.remove);

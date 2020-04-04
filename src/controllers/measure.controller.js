@@ -9,7 +9,7 @@ const get = function (req, res,next) {
 
 };
 const index = function (req, res,next) {
-    Measure.find({},(err,result)=>{
+    Measure.find({device:req.params.deviceID},(err,result)=>{
         if(err) next(err);
         else
             res.send(result);

@@ -2,12 +2,13 @@
   "name": "issd",
   "version": "1.0.0",
   "description": "Backend in Express.js for ISSD HackYeah project",
-  "main": "app.js",
+  "main": "src/app.js",
   "author": "Karol Wiater",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon --exec babel-node app",
-    "start": "node app.js"
+    "dev": "nodemon --exec babel-node ./src/app.js",
+    "start": "node ./dist/app.js",
+    "build": "babel ./src --out-dir dist"
   },
   "keywords": [
     "node",
@@ -16,15 +17,18 @@
     "mongodb"
   ],
   "dependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/node": "^7.8.7",
-    "@babel/preset-env": "^7.9.0",
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongodb": "^3.5.5",
-    "mongoose": "^5.9.7",
-    "nodemon": "^2.0.2"
+    "mongoose": "^5.9.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.0",
+    "nodemon": "^2.0.2",
+    "@babel/cli": "^7.8.4"
   }
 }

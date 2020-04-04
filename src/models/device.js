@@ -1,22 +1,23 @@
 import mongoose from 'mongoose'
 const deviceSchema = new mongoose.Schema({
-    device: {
+    name: {
         type: String,
         unique: true,
         required: true,
     },
     location:{
-        required: true,
-        lat: {
-          type: Number,
-          required: true,
+        type: {
+            type: String,
+            enum: ['Point'],
+            required: true
         },
-        long: {
-            type:Number,
-            required: true,
-        },
+        coordinates: {
+            type: [Number], //[long,lat]
+            required: true
+        }
     }
 });
+deviceSchema.index({'location':'2dsphere'});
 const Device = mongoose.model('Device',deviceSchema);
 
 export default Device;
