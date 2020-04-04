@@ -33,7 +33,7 @@ const index = function (req, res,next) {
                 data: {$push: "$$ROOT" },
             }
         },
-        {$sort: {"_id.d":-1,"_id.h":-1}},
+        {$sort: {"_id.d":1,"_id.h":1}},
         {
             $project: {
                 _id: 1,
