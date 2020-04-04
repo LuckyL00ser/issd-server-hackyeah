@@ -1,8 +1,10 @@
 import express from 'express'
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import {connectDb} from './models/modelsIndex';
+import dotenv from 'dotenv'
+dotenv.config();
 
+import {connectDb} from './models/modelsIndex';
 import apiRoutes from './routes/api';
 
 //TODO linter
@@ -14,7 +16,6 @@ app.use('/api',apiRoutes);
 
 //Handle production
 if(process.env.NODE_ENV === 'production'){
-    //static folder
     app.use(express.static(`${__dirname}/public/`));
     app.get(/.*/,(req,res)=>res.sendFile(`${__dirname}/public/index.html`));
 }
