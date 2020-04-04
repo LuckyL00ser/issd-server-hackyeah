@@ -1,4 +1,5 @@
 import Device from '../models/device'
+import Measure from "../models/measure";
 
 const get = function (req, res,next) {
     Device.findOne({_id:req.params.id},(err,result)=>{
@@ -19,11 +20,10 @@ const getNearbyDevices = function (req, res,next) {
             res.send(result);
     })
 };
-const index = function (req, res,next) {
+const index =  function (req, res,next) {
     let query = {}
-
     if(req.query.name)
-        query = {name: new RegExp(`^${req.query.name}`,"i")}
+        query['name'] =new RegExp(`${req.query.name}`,"i")
 
     Device.find(query,(err,result)=>{
         if(err) next(err);
@@ -49,12 +49,13 @@ const update = function (req, res,next) {
         }
     })
 };
-//TODO remove related measures
 const remove = function (req, res,next) {
     Device.deleteOne({_id:req.params.id},(err,result)=>{
         if(err)next(err);
         else{
-            res.send(result)
+            Measure.deleteMany({device:req.params.id},(err,resultMeasure)=>{
+                res.send(resultMeasure)
+            })
         }
     })
 };

@@ -4,7 +4,7 @@ import cors from 'cors';
 import dotenv from 'dotenv'
 dotenv.config();
 
-import {connectDb} from './models/modelsIndex';
+import {connectDb} from './models/connectDB';
 import apiRoutes from './routes/api';
 
 //TODO linter
