@@ -9,11 +9,13 @@ const get = function (req, res,next) {
 
 };
 const index = function (req, res,next) {
-    Measure.find({device:req.params.deviceID},(err,result)=>{
+    const yesterday24H = new Date(new Date()-24*60*60*1000);   //24h ago
+
+    Measure.find({device:req.params.deviceID, time: { $gt: yesterday24H}},null,{sort: {time:-1}},(err,result)=>{
         if(err) next(err);
         else
             res.send(result);
-    })
+    });
 };
 const create = function (req, res, next) {
 
