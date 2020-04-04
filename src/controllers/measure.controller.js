@@ -22,7 +22,6 @@ const index = function (req, res,next) {
         {    $match: {device: mongoose.Types.ObjectId(req.params.deviceID),time: {$gt:yesterday24H}},
 
         },
-        {$sort: {time:-1}},
         {
             $group: {
                 _id: {
@@ -34,6 +33,7 @@ const index = function (req, res,next) {
                 data: {$push: "$$ROOT" },
             }
         },
+        {$sort: {"_id.d":-1,"_id.h":-1}},
         {
             $project: {
                 _id: 1,
