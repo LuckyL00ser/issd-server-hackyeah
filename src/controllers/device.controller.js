@@ -11,7 +11,7 @@ const get = function (req, res,next) {
 const getNearbyDevices = function (req, res,next) {
     Device.find({ location: {
                         $near: {
-                            $geometry: {type:'Point',coordinates: req.body.coordinates},
+                            $geometry: {type:'Point',coordinates: [req.params.lat,req.params.lng]},
                             $maxDistance: 1000
                         }
     }},(err,result)=>{

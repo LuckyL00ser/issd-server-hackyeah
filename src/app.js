@@ -4,7 +4,7 @@ import cors from 'cors';
 import dotenv from 'dotenv'
 dotenv.config();
 
-import server from "./mqtt/mqttBroker";
+
 
 import connectDb from './models/connectDB';
 import apiRoutes from './routes/api';
