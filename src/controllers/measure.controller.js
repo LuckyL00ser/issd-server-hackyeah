@@ -19,7 +19,7 @@ const index = function (req, res,next) {
     });*/
 
     Measure.aggregate([
-        {    $match: {device: mongoose.Types.ObjectId(req.params.deviceID),time: {$gt:yesterday24H}},
+        {    $match: {device: mongoose.Types.ObjectId(req.params.deviceID)},
 
         },
         {
@@ -54,12 +54,12 @@ const index = function (req, res,next) {
 };
 const create = function (req, res, next) {
 
-    let drink = new Measure(req.body);
-    drink.save(function (err) {
+    let device = new Measure(req.body);
+    device.save(function (err) {
         if (err) {
             return next(err);
         }
-        res.send(drink)
+        res.send(device)
     })
 };
 export {get,index,create}
